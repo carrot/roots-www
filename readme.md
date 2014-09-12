@@ -1,6 +1,6 @@
-# Roots Template: roots-web
+# Roots Website
 
-roots marketing page
+Roots' humble marketing and documentation page.
 
 Setup
 -----
