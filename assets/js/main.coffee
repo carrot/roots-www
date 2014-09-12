@@ -1,6 +1,7 @@
-require.config
-  paths:
-    jquery: '//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min'
+$ = require('zepto-browserify').$
+hljs = require 'highlight.js'
 
-require ['jquery'], ($) ->
-  console.log 'jquery loaded'
+console.log 'hello there'
+console.log $('pre')
+
+hljs.initHighlightingOnLoad()

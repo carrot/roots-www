@@ -5,10 +5,14 @@
     "autoprefixer-stylus": "0.3.x",
     "axis": "0.2.x",
     "coffee-script": "1.8.x",
+    "highlight.js": "^8.2.0",
     "jade": "1.x",
     "jeet": "6.x",
     "marked": "0.3.x",
+    "roots": "^3.0.0-rc.9",
+    "roots-browserify": "^0.1.0",
     "rupture": "0.4.x",
-    "stylus": "0.48.x"
+    "stylus": "0.48.x",
+    "zepto-browserify": "^1.1.3-0"
   }
 }
