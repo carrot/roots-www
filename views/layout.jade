@@ -3,14 +3,14 @@ html
   head
     meta(charset='utf8')
     meta(http-equiv='X-UA-Compatible', content='IE=edge, chrome=1')
-    meta(name='description', content='description of your site')
-    meta(name='author', content= "author of the site")
-    title= path
+    meta(name='description', content=description)
+    meta(name='author', content=author)
+    title= title
     script(src="//use.typekit.net/ick8zlx.js")
     script.
       try{Typekit.load();}catch(e){}
-    link(rel='stylesheet', href='css/master.css')
-  body
+    link(rel='stylesheet', href='/css/master.css')
+  body(id= _path.match(/(\w+)\.html$/)[1])
     block content
 
-  script(data-main="js/main", src="//cdnjs.cloudflare.com/ajax/libs/require.js/2.1.9/require.min.js")
+  script(src='/js/build.js')

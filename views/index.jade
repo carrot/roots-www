@@ -1,6 +1,66 @@
 extends layout
 
 block content
-  h3 Welcome to roots!
-  :markdown
-    Find tutorials and documentation at http://roots.cx : )
+
+  #header
+    h1 Roots
+    h2 Enlightened Static Sites
+
+    .light-rays
+
+    .clouds
+      img.c1(src='/img/index/c1.svg')
+      img.c2(src='/img/index/c2.svg')
+      img.c3(src='/img/index/c1.svg')
+
+    .trees
+      img.t1(src='/img/index/t1.svg')
+      img.t2(src='/img/index/t2.svg')
+      img.t3(src='/img/index/t3.svg')
+      img.t4(src='/img/index/t4.svg')
+      img.t5(src='/img/index/t5.svg')
+
+  #intro
+    .text
+      :markdown
+        ### What is Roots?
+
+        Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Maecenas sed diam eget risus varius blandit sit amet non magna. Aenean lacinia bibendum nulla sed consectetur. Cras mattis consectetur purus sit amet fermentum.
+        
+        ### Why Use Roots?
+
+        Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Maecenas sed diam eget risus varius blandit sit amet non magna. Aenean lacinia bibendum nulla sed consectetur. Cras mattis consectetur purus sit amet fermentum.
+
+    .video
+
+    .trees
+      img.t1(src='/img/index/t6.svg')
+      img.t2(src='/img/index/t7.svg')
+      img.t3(src='/img/index/t8.svg')
+      img.t4(src='/img/index/t9.svg')
+
+  #resources
+    ul
+      li
+        .icon
+        .text
+          h3 Documentation
+          p The down and dirty technical specifications on how to use roots and its API.
+      li
+        .icon
+        .text
+          h3 Tutorials
+          p Articles curated by the roots core team on a variety of different ways that you can use roots.
+      li
+        .icon
+        .text
+          h3 Extensions
+          p A curated gallery of roots extensions, which can be used to add additional functionality to roots.
+
+    .trees
+      img.t1(src='/img/index/t10.svg')
+      img.t2(src='/img/index/t11.svg')
+      img.t3(src='/img/index/t12.svg')
+
+  #footer
+    a(href='#'): img.built-at-carrot(src='/img/index/built-at-carrot.svg')

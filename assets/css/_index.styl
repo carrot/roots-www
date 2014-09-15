@@ -1,0 +1,135 @@
+#index
+  font-family: freight-sans-pro
+  
+  & > div
+    position: relative
+    overflow: hidden
+    group()
+  
+  .trees
+    absolute: bottom -2px left -2px
+    height: 137px
+    width: 101%
+    
+  .trees > img
+    width: 100%
+    background-size: 100% auto
+    background-repeat: no-repeat
+    absolute: bottom
+    display: block
+
+#header
+  gradient: #EED584 #E9B27B
+  text-align: center
+  height: 55vw
+  
+  h1
+    color: #4B3C28
+    upcase()
+    font-size: 3.4em
+    font-weight: 600
+    margin: 0
+    padding-top: 15%
+    transition()
+    
+    +above(1000px)
+      font-size: 4.2em
+    
+    +below(600px)
+      padding-top: 10%
+    
+    +below(450px)
+      font-size: 2.5em
+  
+  h2
+    color: #FAEAD1
+    font-weight: 400
+    font-size: 1.2em
+    margin: -10px 0 0 0
+    downcase()
+    transition()
+    
+    +above(1000px)
+      font-size: 1.4em
+    
+    +below(450px)
+      font-size: .86em
+      margin-top: -8px
+  
+  .clouds
+    display: none
+
+#intro
+  gradient: #C1CDA1 #86BBE0
+  
+  h3
+    font-family: sommet-rounded
+    font-size: 1.3em
+    text-align: center
+    color: #FCFFF4
+  
+  .text
+    max-width: 680px
+    padding: 0 30px
+    margin: 25px auto 50px auto
+    color: #55553E
+  
+  .video
+    position: relative
+    z-index: 2
+    width: 80%
+    height: 38vw
+    margin: 0 auto
+    background: #3E3E3E
+    transition()
+    
+    +below(700px)
+      width: 90%
+      height: 42vw
+
+#resources
+  gradient: #7395BE #494571
+  color: #35404C
+  
+  h3
+    font-family: sommet-rounded
+    font-size: 1.3em
+    color: #E0E9F4
+    margin: 0.3em 0 0.5em 0
+  
+  ul
+    reset-list()
+    max-width: 600px
+    padding: 0 30px
+    margin: 50px auto 25% auto
+    
+    li
+      group()
+      margin-bottom: 30px
+
+    .icon, .text
+      float: left
+    
+    .text
+      width: 70%
+      
+      +below(500px)
+        width: 60%
+
+    .icon
+      size: 100px
+      rounded()
+      background: #D1DAE7
+      margin-right: 25px
+      transition()
+      
+      +below(500px)
+        size: 90px
+
+#footer
+  background: #2D2E50
+  height: 130px
+  text-align: center
+  
+  img
+    margin-top: 50px
