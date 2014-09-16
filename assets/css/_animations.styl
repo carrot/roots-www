@@ -6,13 +6,8 @@
     transform: rotate(360deg)
 
 @keyframes drift
-  0%
-    left: -120px
-  100%
-    left: 100vw
-
-@keyframes drift-reverse
-  0%
-    left: 100vw
-  100%
-    left: -120px
+  from
+    transform: translate(0,0)
+  to
+    transform: translate(100vw, 0)
+    

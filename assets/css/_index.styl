@@ -68,6 +68,7 @@
 
   .clouds img
     absolute: top left -120px
+    transform: translate(0,0)
     animation-timing-function: linear
     animation-iteration-count: infinite
 
@@ -79,8 +80,10 @@
 
     &:nth-child(2)
       top: 14vw
-      left: 100vw
-      animation-name: drift-reverse
+      left: 0
+      transform: translate(100vw, 0)
+      animation-name: drift
+      animation-direction: reverse
       animation-duration: 120s
 
     &:nth-child(3)
