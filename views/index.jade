@@ -9,9 +9,9 @@ block content
     img.light-rays(src='/img/index/light-rays.svg')
 
     .clouds
-      img.c1(src='/img/index/c1.svg')
-      img.c2(src='/img/index/c2.svg')
-      img.c3(src='/img/index/c1.svg')
+      img.c1(src='/img/index/c2.svg')
+      img.c2(src='/img/index/c1.svg')
+      img.c3(src='/img/index/c2.svg')
 
     .trees
       img.t1(src='/img/index/t1.svg')
@@ -42,20 +42,26 @@ block content
   #resources
     ul
       li
-        .icon
-        .text
-          h3 Documentation
-          p The down and dirty technical specifications on how to use roots and its API.
+        a(href='/docs')
+          .icon
+            img(src='/img/index/docs-icon.svg')
+          .text
+            h3 Documentation
+            p The down and dirty technical specifications on how to use roots and its API.
       li
-        .icon
-        .text
-          h3 Tutorials
-          p Articles curated by the roots core team on a variety of different ways that you can use roots.
+        a(href='/articles')
+          .icon
+            img(src='/img/index/tutorials-icon.svg')
+          .text
+            h3 Articles
+            p Articles curated by the roots core team on a variety of different ways that you can use roots.
       li
-        .icon
-        .text
-          h3 Extensions
-          p A curated gallery of roots extensions, which can be used to add additional functionality to roots.
+        a(href='/extensions')
+          .icon
+            img(src='/img/index/extensions-icon.svg')
+          .text
+            h3 Extensions
+            p A curated gallery of roots extensions, which can be used to add additional functionality to roots.
 
     .trees
       img.t1(src='/img/index/t10.svg')
@@ -63,4 +69,4 @@ block content
       img.t3(src='/img/index/t12.svg')
 
   #footer
-    a(href='#'): img.built-at-carrot(src='/img/index/built-at-carrot.svg')
+    a(href='http://carrot.is'): img.built-at-carrot(src='/img/index/built-at-carrot.svg')

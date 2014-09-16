@@ -66,8 +66,28 @@
       font-size: .86em
       margin-top: -8px
 
-  .clouds
-    display: none
+  .clouds img
+    absolute: top left -120px
+    animation-timing-function: linear
+    animation-iteration-count: infinite
+
+    &:nth-child(1)
+      top: 28vw
+      animation-name: drift
+      animation-delay: 3s
+      animation-duration: 150s
+
+    &:nth-child(2)
+      top: 14vw
+      left: 100vw
+      animation-name: drift-reverse
+      animation-duration: 120s
+
+    &:nth-child(3)
+      top: 5vw
+      animation-name: drift
+      animation-delay: 25s
+      animation-duration: 80s
 
 #intro
   gradient: #C1CDA1 #86BBE0
@@ -83,6 +103,7 @@
     padding: 0 30px
     margin: 25px auto 50px auto
     color: #55553E
+    line-height: 1.4em
 
   .video
     position: relative
@@ -101,6 +122,13 @@
   gradient: #7395BE #494571
   color: #35404C
 
+  a
+    color: #35404C
+    group()
+
+    &:hover .icon
+      transform: scale(1.1) rotate(-3deg)
+
   h3
     font-family: sommet-rounded
     font-size: 1.3em
@@ -111,11 +139,32 @@
     reset-list()
     max-width: 600px
     padding: 0 30px
-    margin: 50px auto 25% auto
+    margin: 7% auto 23% auto
 
     li
       group()
       margin-bottom: 30px
+
+      +below(500px)
+        margin-bottom: 15px
+
+      &:nth-child(1) .icon
+        padding: 32px 27px
+
+        +below(500px)
+          padding: 29px 24px
+
+      &:nth-child(2) .icon
+        padding: 37px 28px
+
+        +below(500px)
+          padding: 34px 25px
+
+      &:nth-child(3) .icon
+        padding: 30px 34px
+
+        +below(500px)
+          padding: 30px 32px
 
     .icon, .text
       float: left
@@ -131,7 +180,12 @@
       rounded()
       background: #D1DAE7
       margin-right: 25px
+      text-align: center
       transition()
+      border-box()
+
+      img
+        max-width: 100%
 
       +below(500px)
         size: 90px
@@ -143,10 +197,3 @@
 
   img
     margin-top: 50px
-
-@keyframes rotate
-  0%
-    transform: rotate(0deg)
-
-  100%
-    transform: rotate(360deg)
