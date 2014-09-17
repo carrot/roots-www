@@ -1,6 +1,10 @@
 {
   "name": "roots-web",
   "description": "roots marketing page",
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/carrot/roots-web.git"
+  },
   "dependencies": {
     "autoprefixer-stylus": "0.3.x",
     "axis": "0.2.x",
@@ -8,7 +12,9 @@
     "highlight.js": "^8.2.0",
     "jade": "1.x",
     "jeet": "6.x",
+    "lodash.debounce": "2.x",
     "marked": "0.3.x",
+    "parallax.js": "jenius/parallax",
     "roots": "^3.0.0-rc.9",
     "roots-browserify": "^0.1.0",
     "rupture": "0.4.x",
