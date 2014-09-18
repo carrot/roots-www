@@ -13,7 +13,7 @@ html
   body(id= _path.match(/(\w+)\.html$/)[1])
 
     nav
-      .logo
+      a.logo(href='/')
         h1 Roots
         h2 enlightened static sites
 
@@ -25,9 +25,10 @@ html
       img.light-rays(src='/img/index/light-rays.svg')
 
       .trees
-        img.trees1(src='/img/single/trees1.svg')
-        img.trees2(src='/img/single/trees2.svg')
-        img.trees3(src='/img/single/trees3.svg')
+        .anchor.layer
+        img.trees1.layer(src='/img/single/trees1.svg', data-depth='0.40')
+        img.trees2.layer(src='/img/single/trees2.svg', data-depth='0.20')
+        img.trees3.layer(src='/img/single/trees3.svg', data-depth='0.00')
 
     main
       block content
