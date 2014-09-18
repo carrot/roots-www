@@ -14,3 +14,4 @@ if $('#index').length
   new Parallax($('#resources .trees')[0], opts)
 else
   new Parallax($('nav .trees')[0], opts)
+  new Parallax($('main .trees')[0], opts)

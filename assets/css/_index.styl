@@ -6,185 +6,177 @@
     overflow: hidden
     group()
 
-#header
-  gradient: #EED584 #E9B27B
-  text-align: center
-  height: 55vw
-
-  .light-rays
-    absolute: top left
-    width: 200%
-    margin: -50% 0 0 -50%
-    animation: rotate 180s linear infinite
-
-  h1
-    position: relative
-    z-index: 2
-    color: #4B3C28
-    upcase()
-    font-size: 3.4em
-    font-weight: 600
-    margin: 0
-    padding-top: 15%
-    transition()
-
-    +above(1000px)
-      font-size: 4.2em
-
-    +below(600px)
-      padding-top: 10%
-
-    +below(450px)
-      font-size: 2.5em
-
-  h2
-    position: relative
-    z-index: 2
-    color: #FAEAD1
-    font-weight: 400
-    font-size: 1.2em
-    margin: -10px 0 0 0
-    downcase()
-    transition()
-
-    +above(1000px)
-      font-size: 1.4em
-
-    +below(450px)
-      font-size: .86em
-      margin-top: -8px
-
-  .clouds img
-    absolute: top left -120px
-    transform: translate(0,0)
-    animation-timing-function: linear
-    animation-iteration-count: infinite
-
-    &:nth-child(1)
-      top: 28vw
-      animation-name: drift
-      animation-delay: 3s
-      animation-duration: 150s
-
-    &:nth-child(2)
-      top: 14vw
-      left: 0
-      transform: translate(100vw, 0)
-      animation-name: drift
-      animation-direction: reverse
-      animation-duration: 120s
-
-    &:nth-child(3)
-      top: 5vw
-      animation-name: drift
-      animation-delay: 25s
-      animation-duration: 80s
-
-#intro
-  gradient: #C1CDA1 #86BBE0
-
-  h3
-    font-family: sommet-rounded
-    font-size: 1.3em
+  #header
+    gradient: #EED584 #E9B27B
     text-align: center
-    color: #FCFFF4
+    height: 55vw
 
-  .text
-    max-width: 680px
-    padding: 0 30px
-    margin: 25px auto 50px auto
-    color: #55553E
-    line-height: 1.4em
+    .light-rays
+      absolute: top left
+      width: 200%
+      margin: -50% 0 0 -50%
+      animation: rotate 180s linear infinite
 
-  .video
-    position: relative
-    z-index: 2
-    width: 80%
-    height: 38vw
-    margin: 0 auto
-    background: #3E3E3E
-    transition()
+    h1
+      position: relative
+      z-index: 2
+      color: #4B3C28
+      upcase()
+      font-size: 3.4em
+      font-weight: 600
+      margin: 0
+      padding-top: 15%
+      transition()
 
-    +below(700px)
-      width: 90%
-      height: 42vw
+      +above(1000px)
+        font-size: 4.2em
 
-#resources
-  gradient: #7395BE #494571
-  color: #35404C
+      +below(600px)
+        padding-top: 10%
 
-  a
-    color: #35404C
-    group()
+      +below(450px)
+        font-size: 2.5em
 
-    &:hover .icon
-      transform: scale(1.1) rotate(-3deg)
+    h2
+      position: relative
+      z-index: 2
+      color: #FAEAD1
+      font-weight: 400
+      font-size: 1.2em
+      margin: -10px 0 0 0
+      downcase()
+      transition()
 
-  h3
-    font-family: sommet-rounded
-    font-size: 1.3em
-    color: #E0E9F4
-    margin: 0.3em 0 0.5em 0
+      +above(1000px)
+        font-size: 1.4em
 
-  ul
-    reset-list()
-    max-width: 600px
-    padding: 0 30px
-    margin: 7% auto 23% auto
+      +below(450px)
+        font-size: .86em
+        margin-top: -8px
 
-    li
-      group()
-      margin-bottom: 30px
+    .clouds img
+      absolute: top left -120px
+      transform: translate(0,0)
+      animation-timing-function: linear
+      animation-iteration-count: infinite
 
-      +below(500px)
-        margin-bottom: 15px
+      &:nth-child(1)
+        top: 28vw
+        animation-name: drift
+        animation-delay: 3s
+        animation-duration: 150s
 
-      &:nth-child(1) .icon
-        padding: 32px 27px
+      &:nth-child(2)
+        top: 14vw
+        left: 0
+        transform: translate(100vw, 0)
+        animation-name: drift
+        animation-direction: reverse
+        animation-duration: 120s
 
-        +below(500px)
-          padding: 29px 24px
+      &:nth-child(3)
+        top: 5vw
+        animation-name: drift
+        animation-delay: 25s
+        animation-duration: 80s
 
-      &:nth-child(2) .icon
-        padding: 37px 28px
+  #intro
+    gradient: #C1CDA1 #86BBE0
 
-        +below(500px)
-          padding: 34px 25px
-
-      &:nth-child(3) .icon
-        padding: 30px 34px
-
-        +below(500px)
-          padding: 30px 32px
-
-    .icon, .text
-      float: left
+    h3
+      font-family: sommet-rounded
+      font-size: 1.3em
+      text-align: center
+      color: #FCFFF4
 
     .text
-      width: 70%
+      max-width: 680px
+      padding: 0 30px
+      margin: 25px auto 50px auto
+      color: #55553E
+      line-height: 1.4em
 
-      +below(500px)
-        width: 60%
-
-    .icon
-      size: 100px
-      rounded()
-      background: #D1DAE7
-      margin-right: 25px
-      text-align: center
+    .video
+      position: relative
+      z-index: 2
+      width: 80%
+      height: 38vw
+      margin: 0 auto
+      background: #3E3E3E
       transition()
-      border-box()
 
-      img
-        max-width: 100%
+      +below(700px)
+        width: 90%
+        height: 42vw
 
-      +below(500px)
-        size: 90px
+  #resources
+    gradient: #7395BE #494571
+    color: #35404C
 
-#footer
-  background: #2D2E50
-  height: 130px
-  text-align: center
+    a
+      color: #35404C
+      group()
 
-  img
-    margin-top: 50px
+      &:hover .icon
+        transform: scale(1.1) rotate(-3deg)
+
+    h3
+      font-family: sommet-rounded
+      font-size: 1.3em
+      color: #E0E9F4
+      margin: 0.3em 0 0.5em 0
+
+    ul
+      reset-list()
+      max-width: 600px
+      padding: 0 30px
+      margin: 7% auto 23% auto
+
+      li
+        group()
+        margin-bottom: 30px
+
+        +below(500px)
+          margin-bottom: 15px
+
+        &:nth-child(1) .icon
+          padding: 32px 27px
+
+          +below(500px)
+            padding: 29px 24px
+
+        &:nth-child(2) .icon
+          padding: 37px 28px
+
+          +below(500px)
+            padding: 34px 25px
+
+        &:nth-child(3) .icon
+          padding: 30px 34px
+
+          +below(500px)
+            padding: 30px 32px
+
+      .icon, .text
+        float: left
+
+      .text
+        width: 70%
+
+        +below(500px)
+          width: 60%
+
+      .icon
+        size: 100px
+        rounded()
+        background: #D1DAE7
+        margin-right: 25px
+        text-align: center
+        transition()
+        border-box()
+
+        img
+          max-width: 100%
+
+        +below(500px)
+          size: 90px

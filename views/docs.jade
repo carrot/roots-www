@@ -1,18 +1,17 @@
 extends single_layout
 
 block content
-  .center
-    :markdown
-      ### Configuration
-      
-      Sed posuere consectetur est at lobortis. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Sed posuere consectetur est at lobortis.
+  :markdown
+    ### Configuration
 
-      ```coffee
-      class API
+    Sed posuere consectetur est at lobortis. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Sed posuere consectetur est at lobortis.
 
-        constructor: (opts) ->
-          request = new Request(opts)
-          @photos = new Photos(request)
-          @users = new Users(request)
-          @blogs = new Blogs(request)
-      ```
+    ```coffee
+    class API
+
+      constructor: (opts) ->
+        request = new Request(opts)
+        @photos = new Photos(request)
+        @users = new Users(request)
+        @blogs = new Blogs(request)
+    ```

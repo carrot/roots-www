@@ -26,11 +26,21 @@ html
 
       .trees
         .anchor.layer
-        img.trees1.layer(src='/img/single/trees1.svg', data-depth='0.40')
-        img.trees2.layer(src='/img/single/trees2.svg', data-depth='0.20')
-        img.trees3.layer(src='/img/single/trees3.svg', data-depth='0.00')
+        img.trees1.layer(src='/img/single/t1.svg', data-depth='0.40')
+        img.trees2.layer(src='/img/single/t2.svg', data-depth='0.20')
+        img.trees3.layer(src='/img/single/t3.svg', data-depth='0.00')
 
     main
-      block content
+      .center
+        block content
+
+      .trees
+        .anchor.layer
+        img.t1.layer(src='/img/single/t4.svg', data-depth='0.40')
+        img.t2.layer(src='/img/single/t5.svg', data-depth='0.20')
+        img.t3.layer(src='/img/single/t6.svg', data-depth='0.00')
+
+    #footer.single
+      a(href='http://carrot.is'): img.built-at-carrot(src='/img/single/built-at-carrot.svg')
 
   script(src='/js/build.js')

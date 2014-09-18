@@ -3,7 +3,7 @@
   padding: 0 30px
 
 pre
-  background: #2E2937
+  background: #292A38
   padding: 20px
   border-radius: 8px
   font-size: 14px
@@ -12,8 +12,11 @@ pre
 
 main
   group()
+  position: relative
+  overflow: hidden
+  padding-bottom: 25vw
   height: 100%
-  background: linear-gradient(#524E5A, #333351)
+  background: linear-gradient(top, #524E5A 0em, #313247 30em)
   color: #DFDDEE
   font-family: freight-sans-pro
   padding-top: 30px
@@ -22,7 +25,25 @@ main
     color: #F0DC9E
     font-family: sommet-rounded
     font-size: 1.4em
-    margin: .5em 0
+    margin: 1em 0
+
+  a
+    text-decoration: none
+    color: #F0DC9E
+    border-bottom: 1px solid transparent
+    transition()
+
+    &:hover
+      color: lighten(@color, 20%)
+      border-bottom: 1px solid
+
+  p
+    line-height: 1.5em
+    -webkit-font-smoothing: subpixel-antialiased
+
+  p > code
+    color: #C76060
+    font-size: .9em
 
 nav
   position: relative
