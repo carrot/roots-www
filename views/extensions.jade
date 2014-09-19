@@ -6,28 +6,7 @@ block content
     A collection of plugins that can be used to extend roots' functionality. To add yours to the list, tag your package with `rootsplugin` as a keyword on npm when you publish it.
 
   ul
-    li: a(href='https://github.com/carrot/roots-dynamic-content', target='_blank')
-      h4 Dynamic Content
-      p Create pages and collections with Jekyll-style front matter.
-    li: a(href='https://github.com/carrot/roots-client-templates', target='_blank')
-      h4 Client Templates
-      p Precompile view templates to javascript functions
-    li: a(href='https://github.com/carrot/roots-js-pipeline', target='_blank')
-      h4 JS Pipeline
-      p Sprockets-esque javascript pipeline for concat and minification
-    li: a(href='https://github.com/carrot/roots-css-pipeline', target='_blank')
-      h4 CSS Pipeline
-      p Sprockets-esque css pipeline for concat and minification
-    li: a(href='https://github.com/carrot/roots-browserify', target='_blank')
-      h4 Browserify
-      p Use browserify to compile javascript and/or coffeescript
-    li: a(href='https://github.com/carrot/roots-records', target='_blank')
-      h4 Records
-      p Include json from a local or remote source in your templates
-    li: a(href='https://github.com/carrot/roots-contentful', target='_blank')
-      h4 Contentful
-      p Sync json from contentful and compile into your views
-    li: a(href='https://github.com/carrot/roots-component', target='_blank')
-      h4 Component
-      p Compile component packages into your output
-
+    each ext in site.extensions
+      li: a(href=ext.link, target='_blank')
+        h4= ext.title
+        p= ext.description

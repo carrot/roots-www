@@ -9,6 +9,7 @@
     "autoprefixer-stylus": "0.3.x",
     "axis": "0.2.x",
     "coffee-script": "1.8.x",
+    "dynamic-content": "0.0.3",
     "highlight.js": "^8.2.0",
     "jade": "1.x",
     "jeet": "6.x",
