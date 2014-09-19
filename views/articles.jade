@@ -1,7 +1,11 @@
 extends single_layout
 
 block content
-  ul
+  h3 Articles
+  :markdown
+    Below, you can find a list of articles curated by the roots core team about interesting uses for roots. If you'd like to submit one of your articles, send us a [pull request](https://github.com/carrot/roots-web/issues)!
+
+  ul#list
     li: a(href='/articles/getting-started')
-      h3 Getting Started
+      h4 Getting Started
       p A guide through the basics of roots

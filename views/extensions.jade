@@ -5,7 +5,7 @@ block content
   :markdown
     A collection of plugins that can be used to extend roots' functionality. To add yours to the list, tag your package with `rootsplugin` as a keyword on npm when you publish it.
 
-  ul
+  ul#list
     each ext in site.extensions
       li: a(href=ext.link, target='_blank')
         h4= ext.title
