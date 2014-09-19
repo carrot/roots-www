@@ -28,23 +28,23 @@ main
     font-size: 1.4em
     margin: 1em 0
 
-  a
-    text-decoration: none
-    color: #F0DC9E
-    border-bottom: 1px solid transparent
-    transition()
-
-    &:hover
-      color: lighten(@color, 20%)
-      border-bottom: 1px solid
-
   p
     line-height: 1.5em
     -webkit-font-smoothing: subpixel-antialiased
 
-  p > code
-    color: #C76060
-    font-size: .9em
+    a
+      text-decoration: none
+      color: #F0DC9E
+      border-bottom: 1px solid transparent
+      transition()
+
+      &:hover
+        color: lighten(@color, 20%)
+        border-bottom: 1px solid
+
+    > code
+      color: #C76060
+      font-size: .9em
 
 nav
   position: relative

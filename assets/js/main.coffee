@@ -1,11 +1,13 @@
-$    = require('zepto-browserify').$
-hljs = require 'highlight.js'
+$        = require('zepto-browserify').$
+hljs     = require 'highlight.js'
 Parallax = require 'parallax.js'
 
 # code highlighting
+
 hljs.initHighlightingOnLoad()
 
 # plax
+
 opts = { scalarX: 2, scalarY: 20 }
 
 if $('#index').length
