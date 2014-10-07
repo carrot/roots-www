@@ -39,19 +39,20 @@ main
     line-height: 1.5em
     -webkit-font-smoothing: subpixel-antialiased
 
-    a
-      text-decoration: none
-      color: #F0DC9E
-      border-bottom: 1px solid transparent
-      transition()
-
-      &:hover
-        color: lighten(@color, 20%)
-        border-bottom: 1px solid
-
     > code
       color: #9F98CB
       font-size: .9em
+
+  p a, li a
+    text-decoration: none
+    color: #F0DC9E
+    border-bottom: 1px solid transparent
+    transition()
+
+    &:hover
+      color: lighten(@color, 20%)
+      border-bottom: 1px solid
+
 
 nav
   position: relative
