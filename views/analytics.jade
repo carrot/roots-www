@@ -1,5 +1,19 @@
 extends single_layout
 
 block content
+  h3 Analytics
+
+  :markdown
+    Roots uses very basic analytics to get a high-level view of how developers are using roots, so that the core team can make it better. All data collected from analytics is entirely anonymous and very generic such that it would not be possible to differentiate one user from another. If you do not wish to contribute your own usage data you can flip analytics off with `roots analytics --disable`.
+
+    All data that roots collects from analytics is open source, much like roots itself. We use [Keen.io](http://keen.io), a wonderful analytics service, to track everything and display it here. You are welcome to access roots' analytics data and do with it what you'd like. To put our money where our mouths are, here are they keys you need to get the data from keen:
+
+    ```
+    projectId: '5252fe3d36bf5a4f54000008'
+    readKey: 'c26d1b67ebe0f6b8f13441477cf324d84138abe6f79c4127bd2f318e57c94cc228cc102703d00b58cda6277e10d4b6aee1081def2701649dee56938774a5c4241450d382051c729b086370a4cba2dd9712a85814249864bd19942e523cac2116e5dc4c5f3f4276469da0180506b5bb5d'
+    ```
+
+    Below we have set up a couple simple graphs to help get a visual sense of how usage patterns look. If you would like to add another graph or make a change to any of these, feel free to [submit a pull request](https://github.com/carrot/roots-web) and we'll take a look!
+
   h3 API Usage (Past Week)
   canvas#chart(width='700', height='350')
