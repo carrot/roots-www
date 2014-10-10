@@ -41,7 +41,17 @@ if $('body#analytics').length
     interval: 'daily'
   , (data) ->
     chart_data = format_data(data)
-    ctx = $('#chart')[0].getContext('2d')
+    ctx = $('#api_usage')[0].getContext('2d')
+    chart = new Chart(ctx).Line(chart_data, multiTooltipTemplate: "<%if (datasetLabel){%><%=datasetLabel%>: <%}%><%= value %>")
+
+  query_keen 'count',
+    eventCollection: 'commands'
+    groupBy: 'name'
+    timeframe: 'this_7_days'
+    interval: 'daily'
+  , (data) ->
+    chart_data = format_data(data)
+    ctx = $('#cli_usage')[0].getContext('2d')
     chart = new Chart(ctx).Line(chart_data, multiTooltipTemplate: "<%if (datasetLabel){%><%=datasetLabel%>: <%}%><%= value %>")
 
 format_data = (data) ->
