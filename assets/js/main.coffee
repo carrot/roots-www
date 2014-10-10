@@ -23,7 +23,7 @@ else if $('.trees').length
 
 # analytics
 
-colors = [[220,220,220], [151,187,205]]
+colors = [[198, 206, 158], [237, 222, 171], [227, 184, 145], [217, 67, 98], [94, 67, 83], [84, 89, 126], [131, 186, 228], [83, 104, 135], [198, 206, 158], [237, 222, 171], [227, 184, 145]]
 
 query_keen = (type, opts, cb) ->
   query = new Keen.Query(type, opts)
@@ -59,10 +59,10 @@ format_data = (data) ->
 
   for item in data.result
     res.labels.push(moment(item.timeframe.start).format('M/D/YYYY'))
-    for val in item.value
+    for val, i in item.value
       category = find(res.datasets, label: val.name)
       if not category
-        info = generate_colorset(colors[0])
+        info = generate_colorset(colors[i])
         info.label = val.name
         info.data = [val.result]
         res.datasets.push(info)
