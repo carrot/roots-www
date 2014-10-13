@@ -15,7 +15,7 @@ module.exports =
 
   extensions: [
     dynamic_content(),
-    browserify(files: 'assets/js/main.coffee', out: 'js/build.js', minify: true)
+    browserify(files: 'assets/js/main.coffee', out: 'js/build.js')
   ]
 
   stylus:
