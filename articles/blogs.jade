@@ -1,0 +1,23 @@
+extends ../views/single_layout
+
+block content
+  h3 Roots &amp; Blogs
+
+  :markdown
+    So you want to make a blog. And you want it to be static. Well good news, for simple blogs, roots can be a great solution. However, if you are looking for some more advanced functionality, you'll need to leverage a couple extensions and some javascript to ensure that everything works quickly and smoothly. Let's break down a couple use cases.
+
+    ### Basic Blog
+
+    If you want to make a blog that just has an index page with titles, authors, dates, summaries etc, that each link to a single blog post page (like [this one](http://carrot.is/coding) perhaps, or even the "articles" index on this very site), you can use roots right out of the box with the [dynamic content extension](https://github.com/carrot/roots-dynamic-content). This will allow you to quickly and easily write simple posts and get them online. With this setup, you can create a `posts` folder with front matter, then access your posts with `site.posts` on any other page so you can list them out as an index. The [dynamic content docs](https://github.com/carrot/roots-dynamic-content/blob/master/docs/intro.md#roots-dynamic-content) will help out a lot with this kind of stuff.
+
+    If you want to add simple categories to your blog, you can do so by nesting your dynamic content. So for example, inside your `posts` folder, you could add other folders for your categories, and put the posts in each of those. Since dynamic content supports deep nesting, you will be able to access these in any way you need. [Carrot's Blog](http://carrot.is/blogging) provides a good example of this with it's collections.
+
+    ### More Complex Blog
+
+    Once you start wanting to add features like search, tags, comments, pagination, moving from one blog post to the next without going back to the index, etc. you'll want to start thinking about either finding an alternate solution, or if you are dedicated to the static cause (you should be, it's a waste to run a server request every time someone looks at a blog), digging a little deeper into roots. In order to scale out your blog over hundreds of posts without slowing compile times too much, and in order to be able to paginate smoothly, and give non-developers the ability to make edits, you'll want to consider using a CMS. Right now, we support [contenful](https://contentful.com) through the [roots-contentful extension](https://github.com/carrot/roots-contentful), but in theory we could support any CMS that produces JSON output in the same manner.
+
+    If this is the road you want to go down, make sure to check out our [post on building a static CMS](http://carrot.is/coding/static_cms), which breaks down how we built our company's more complex blog using roots.
+
+    ### The Static Blog Challenge
+
+    Blogs have been around forever, and people seem to take relatively complex features like tags, search, and pagination for granted. If you are looking for a simple setup to get a full-featured blog off the ground quickly, and performance or hosting costs aren't as much of a concern, you should probably look into an alternate solution like [ghost](https://ghost.org/). But if you are dedicated to static and/or just want a simple blog you can write with markdown and publish as flat files, roots can work really nicely for you.
