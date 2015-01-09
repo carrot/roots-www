@@ -8,9 +8,9 @@
   "dependencies": {
     "autoprefixer-stylus": "0.3.x",
     "axis": "0.2.x",
-    "chart.js": "nnnick/Chart.js#v1.0.1-beta.4",
+    "chart.js": "^1.0.1",
     "coffee-script": "1.8.x",
-    "dynamic-content": "0.0.3",
+    "dynamic-content": "0.1.x",
     "highlight.js": "^8.2.0",
     "jade": "1.x",
     "jeet": "6.x",
@@ -19,10 +19,9 @@
     "marked": "0.3.x",
     "moment": "2.x",
     "parallax.js": "jenius/parallax",
-    "roots": "^3.0.0-rc.9",
-    "roots-browserify": "0.1.x",
-    "rupture": "0.4.x",
-    "stylus": "0.48.x",
+    "roots-browserify": "0.3.x",
+    "rupture": "0.6.x",
+    "stylus": "0.49.x",
     "zepto-browserify": "1.x"
   }
 }
