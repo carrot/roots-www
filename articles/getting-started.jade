@@ -23,6 +23,7 @@ block content
     ```fs
     .
     ├── app.coffee
+    ├── app.production.coffee
     ├── assets
     │   ├── css
     │   │   ├── _settings.styl
@@ -37,27 +38,27 @@ block content
         └── layout.jade
     ```
 
-    Roots is a node tool and for that reason uses npm and `package.json` to manage dependencies. You can see a basic `package.json` file at the root. This is optional though, if you have no deps you don't need it. Roots uses one more optional config file as well, `app.coffee`, which you can find at the root as well. We'll talk about this in more depth soon.
+    Roots is a node tool and for that reason uses npm and `package.json` to manage dependencies. You can see a basic `package.json` file at the root. This is optional though, if you have no dependencies you don't need it. Roots uses one more optional config file as well, `app.coffee`, which you can find at the root, as well as `app.production.coffee`. We'll talk about these in more depth soon.
 
-    Other than that, there is a `views` and `assets` folder, which hold the html and css, js, and images respectively. If you open up the views folder you'll find a couple `jade` files. [Jade](http://jade-lang.com) is a great template engine and makes life much easier, but if it's not your jam, you can easily replace it with another option like ejs, handlebars, or one of many others just by installing the package with npm and changing the extension. In fact, let's try it right now and make an ejs template. First run
+    Other than that, there are `views` and `assets` folders, which hold the html and css/js/images, respectively. If you open up the views folder you'll find a couple `jade` files. [Jade](http://jade-lang.com) is a great template engine and makes life much easier, but if it's not your jam, you can easily replace it with another option like ejs, handlebars, [or one of many others](https://github.com/jenius/accord#html) just by installing the package with npm and changing the file extension. In fact, let's try it right now and make an ejs template. First run
 
     ```bash
     $ npm i ejs --save
     ```
 
-    And now create a new file in the views folder with the `ejs` extension (maybe `about.ejs`). That's all it takes!
+    And now create a new file in the views folder with the `ejs` extension (maybe `about.ejs`). That's all it takes! We'll see the result in a moment when we compile.
 
-    Next, let's move on to the assets. Here we are using [stylus](http://learnboost.github.io/stylus) and [coffeescript](http://coffeescript.org), but again you can change this to whatever else you want, including just vanilla css and js if that's your thing. Pretty basic organization overall, really. So let's get this compiled. From your command line, run:
+    Next, let's move on to the assets. Here we are using [stylus](http://learnboost.github.io/stylus) and [coffeescript](http://coffeescript.org), but again you can change these to whatever else you want, including just vanilla css and js if that's your preference. So now that we have reviewed the languages, let's get this site compiled. From your command line, run:
 
     ```bash
     $ roots watch
     ```
 
-    This will compile your site, open it up in a browser, and watch the files for changes. If anything does change, it will recompile and reload the browser for you -- good stuff. Try it! While you're at it, check `about.html` to see if your ejs file compiled.
+    This will compile your site, open it up in a browser, and watch the files for changes. If anything does change, it will recompile and reload the browser for you. Try it! While you're at it, check `http://localhost:1111/about.html` to make sure your ejs file compiled.
 
     ### Using app.coffee
 
-    In roots, `app.coffee` is where you can change settings and extend roots. Let's talk about a couple ways you can use app.coffee to your advantage.
+    In roots, `app.coffee` is a configuration file where you can change settings and extend roots. Let's talk about a couple ways you can use `app.coffee` to your advantage.
 
     First, let's try adding an extension. Roots extensions are a great way to extend roots' core functionality. As an example, let's bring in [roots-browserify](https://github.com/carrot/roots-browserify) so that we can use browserify to handle our javascript pipeline. First, we need to install the extension:
 
@@ -65,7 +66,7 @@ block content
     $ npm i roots-browserify --save
     ```
 
-    Then require it into our `app.coffee` file and initialize it as an extension:
+    Then require it into our `app.coffee` file and initialize it as an extension, making sure to replace `js_pipeline`, which is the default extension for handling your javascript:
 
     ```coffee
     browserify = require 'roots-browserify'
@@ -76,13 +77,13 @@ block content
       ]
     ```
 
-    For more info on initialization, check out [the docs](https://github.com/carrot/roots-browserify#options). Now we have the full power of browserify ready. If you restart the watcher (which you have to do when you change `app.coffee`), you should see a new file in the `public` folder as `js/build.js`. From here, you can remove the handling for require from the default template and use commonjs instead. If you want, you can also add browserify transforms using the `transforms` option to add even more flexibility.
+    For more info on initialization, check out [the docs](https://github.com/carrot/roots-browserify#options). Now we have the full power of browserify ready. If you restart the watcher (which you have to do when you change `app.coffee`), you should see a new file in the `public` folder at `js/build.js`. From here, you can install packages using `npm` and use commonjs to load them wherever you need. If you want, you can also add browserify transforms using the `transforms` option to add even more flexibility.
 
-    There are a bunch more options you can use to customize `app.coffee` as well, which you can read more about [here](https://github.com/jenius/roots/blob/v3/docs/configuration.rst#options), and a directory of extensions will be coming soon!
+    There are a bunch more options you can use to customize `app.coffee` as well, which you can read about [here](/docs/configuration). You can also find a curated directory of roots extensions [here](/extensions).
 
     ### Customizing compilers
 
-    You can also directly customize any custom language's options through roots. You might have seen that there are already some stylus plugins being added in the roots default template, actually. You can modify the options for any other compiler as well, which allows you to customize roots' behavior exactly as you want it to be.
+    You can also directly customize any compiled language's options through roots. You might have seen that there are already some stylus plugins being added in the roots default template, actually. You can modify the options for any other compiler as well, which allows you to customize roots' behavior exactly as you want it to be.
 
     To customize a compiler's behavior, just add options under the compiler's name in `app.coffee`. For example, if we wanted jade to pretty-format the output, we could just add the `pretty` option to jade as such:
 
@@ -92,16 +93,18 @@ block content
         pretty: true
     ```
 
-    To see a full listing of options for each supported language, check out the [accord docs](https://github.com/jenius/accord/tree/master/docs) (accord is the library that handles roots' multi-language compilation).
+    To see a full listing of options for each supported language, check out the [accord docs](https://github.com/jenius/accord/tree/master/docs) (accord is the library that handles roots' multi-language compilation under the hood).
 
     ### Using Environments
 
-    Sometimes you want to be able to specify different setting for different environments. For example, you might want to minify all your code in production, but not in development for easier debugging. Luckily, this is easy to do using environment-specific `app.coffee` files. Let's make a production `app.coffee` as an example. First, create `app.production.coffee` at the root, and copy over your regulat `app.coffee` file's contents. Now make any changes you need to local variables, extension settings, etc.
+    Sometimes you want to be able to specify different setting for different environments. For example, you might want to minify all your code in production, but not in development for easier debugging. Or you might want to produce source maps in development, but not in production. Luckily, this is easy to do using environment-specific `app.coffee` files. You will see that there is already a  `app.production.coffee` at the root, that's exactly what this file is for. In this file, you can see that the `sourcemap` options are no longer passed to any compilers, and that the js and css pipelines now minify their code. You can make any other changes in here that you'd like, such as specifying different config values, etc.
 
-    To finish it out, run roots watch or compile with the `--env` or `-e` flag, as such:
+    To see the effects of the production settings, run roots watch or compile with the `--env` or `-e` flag, as such:
 
     ```bash
     $ roots watch -e production
     ```
 
-    You should see your production settings in effect : )
+    You should see your production settings in effect. Also note that you can make as many environment-specific files as you'd like. For example, if you also want a staging environment, you can make `app.staging.coffee` and run a compile with `roots compile -e staging`. For more information on environment-specific config files, check out [the docs, here](/docs/environments).
+
+    Thanks for taking the time to read through this guide, and hope that you enjoy roots! If you have any questions, make sure to refer to the [docs](/docs) section, and if you can't find your answers there, join us in the [gitter chatroom](https://gitter.im/jenius/roots), and/or [file an issue](https://github.com/jenius/roots/issues) if you think you've found a bug.
