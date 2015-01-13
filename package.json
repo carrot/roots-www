@@ -20,6 +20,7 @@
     "moment": "2.x",
     "parallax.js": "jenius/parallax",
     "roots-browserify": "0.3.x",
+    "roots-yaml": "0.0.4",
     "rupture": "0.6.x",
     "stylus": "0.49.x",
     "zepto-browserify": "1.x"

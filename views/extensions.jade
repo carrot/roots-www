@@ -3,10 +3,10 @@ extends single_layout
 block content
   h3 Roots Extensions
   :markdown
-    A collection of plugins that can be used to extend roots' functionality. To add yours to the list, tag your package with `rootsplugin` as a keyword on npm when you publish it.
+    A collection of plugins that can be used to extend roots' functionality. To add yours to the list, [make a pull request to this site](https://github.com/carrot/roots-www/blob/master/data/extensions.yaml)!
 
   ul#list
-    each ext in site.extensions
+    each ext in data.extensions
       li: a(href=ext.link, target='_blank')
         h4= ext.title
         p= ext.description
