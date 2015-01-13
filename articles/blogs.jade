@@ -16,7 +16,7 @@ block content
 
     Once you start wanting to add features like search, tags, comments, pagination, moving from one blog post to the next without going back to the index, etc. you'll want to start thinking about either finding an alternate solution, or if you are dedicated to the static cause (you should be, it's a waste to run a server request every time someone looks at a blog), digging a little deeper into roots. In order to scale out your blog over hundreds of posts without slowing compile times too much, and in order to be able to paginate smoothly, and give non-developers the ability to make edits, you'll want to consider using a CMS. Right now, we support [contenful](https://contentful.com) through the [roots-contentful extension](https://github.com/carrot/roots-contentful), but in theory we could support any CMS that produces JSON output in the same manner.
 
-    If this is the road you want to go down, make sure to check out our [post on building a static CMS](http://carrot.is/coding/static_cms), which breaks down how we built our company's more complex blog using roots.
+    If this is the road you want to go down, make sure to check out our [post on building a static CMS](http://carrot.is/coding/static_cms), which breaks down how we built our company's more complex blog using roots. In addition, the [client-templates](https://github.com/carrot/roots-client-templates) and [records](https://github.com/carrot/roots-records) extensions will be very useful for configuring the split between static compiled and dynamically loaded content.
 
     ### The Static Blog Challenge
 
