@@ -4,6 +4,7 @@ autoprefixer    = require 'autoprefixer-stylus'
 jeet            = require 'jeet'
 browserify      = require 'roots-browserify'
 dynamic_content = require 'dynamic-content'
+yaml            = require 'roots-yaml'
 
 module.exports =
   ignores: ['readme.md', '**/*layout.*', '**/_*', '.gitignore']
@@ -15,7 +16,8 @@ module.exports =
 
   extensions: [
     dynamic_content(),
-    browserify(files: 'assets/js/main.coffee', out: 'js/build.js', minify: true)
+    browserify(files: 'assets/js/main.coffee', out: 'js/build.js', minify: true),
+    yaml()
   ]
 
   stylus:
