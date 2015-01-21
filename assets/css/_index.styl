@@ -105,6 +105,9 @@
         line-height: 1.55em
         -webkit-font-smoothing: subpixel-antialiased
 
+        +below(400px)
+          font-size: 1em
+
       a
         link: darken(#B0C8B4, 35%)
         font-weight: 600
@@ -133,6 +136,12 @@
           position: relative
           z-index: 2
 
+          +below(1000px)
+            font-size: 1.2em
+
+          +below(800px)
+            font-size: 1em
+
         iframe
           width: 100%
           height: 100%
@@ -144,7 +153,7 @@
 
 
   #resources
-    gradient: #7395BE #494571
+    gradient: #7395BE #4C4B77
     color: #35404C
 
     .more-videos
@@ -156,6 +165,9 @@
         text-align: center
         color: #FCFFF4
 
+        +below(600px)
+          font-size: 1.2em
+
       ul
         inline-list: 19px
         text-align: center
@@ -165,9 +177,25 @@
         li
           cursor: pointer
           position: relative
+          width: 18%
+          margin-right: 2.4%
+          margin-bottom: 15px
+
+          &:nth-child(5n)
+            margin-right: 0
+
+          +below(700px)
+            width: 32%
+            margin-right: 2%
+
+            &:nth-child(5n)
+              margin-right: 2%
+
+            &:nth-child(3n)
+              margin-right: 0
 
           img
-            size: 170px 120px
+            max-width: 100%
             display: block
             margin-bottom: 5px
             border: 3px solid transparent
@@ -175,20 +203,6 @@
 
           &.active img
             border: 3px solid #555D88
-
-          &:before
-            content: ""
-            size: 45px
-            rounded()
-            background: rgba(#000,.5)
-            absolute: top 40px left 64px
-
-          &:after
-            content: ""
-            triangle: right 15px rgba(#fff, .5)
-            absolute: top 52px left 81px
-            border-top-width: 10px
-            border-bottom-width: 10px
 
         span
           font-weight: 600
@@ -221,6 +235,9 @@
         +below(500px)
           margin-bottom: 15px
 
+        +below(350px)
+          text-align: center
+
         &:nth-child(1) .icon
           padding: 32px 27px
 
@@ -239,6 +256,9 @@
           +below(500px)
             padding: 30px 32px
 
+      a
+        group()
+
       .icon, .text
         float: left
 
@@ -247,6 +267,9 @@
 
         +below(500px)
           width: 60%
+
+        +below(400px)
+          width: 100%
 
       .icon
         size: 100px
@@ -262,3 +285,7 @@
 
         +below(500px)
           size: 90px
+
+        +below(350px)
+          float: none
+          margin: 0 auto 10px auto
