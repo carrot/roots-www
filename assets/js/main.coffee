@@ -31,8 +31,6 @@ thumbs.on 'click', ->
   new_title = $(@).find('span').text()
   new_id = $(@).data('id')
 
-  console.log 'doing it'
-
   titlebar.text(new_title)
   iframe.attr('src', "http://www.youtube.com/embed/#{new_id}?hd=1&rel=0&autohide=1&showinfo=0&autoplay=1")
 
