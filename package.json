@@ -1,9 +1,9 @@
 {
-  "name": "roots-web",
+  "name": "roots-www",
   "description": "roots marketing page",
   "repository": {
     "type": "git",
-    "url": "http://github.com/carrot/roots-web.git"
+    "url": "http://github.com/carrot/roots-www.git"
   },
   "dependencies": {
     "autoprefixer-stylus": "0.3.x",

@@ -21,6 +21,22 @@ else if $('.trees').length
   new Parallax($('nav .trees')[0], opts)
   new Parallax($('main .trees')[0], opts)
 
+# video switcher
+
+titlebar = $('.video .stage h2')
+iframe = $('.video .stage iframe')
+thumbs = $('.video .others li')
+
+thumbs.on 'click', ->
+  new_title = $(@).find('span').text()
+  new_id = $(@).data('id')
+
+  titlebar.text(new_title)
+  iframe.attr('src', "//www.youtube.com/embed/#{new_id}?hd=1&rel=0&autohide=1&showinfo=0&autoplay=1")
+
+  thumbs.removeClass('active')
+  $(@).addClass('active')
+
 # analytics
 
 colors = [[198, 206, 158], [237, 222, 171], [227, 184, 145], [217, 67, 98], [94, 67, 83], [84, 89, 126], [131, 186, 228], [83, 104, 135], [198, 206, 158], [237, 222, 171], [227, 184, 145]]

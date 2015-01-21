@@ -110,40 +110,109 @@
         font-weight: 600
 
     .video
+      width: 80%
+      margin: 0 auto
       position: relative
       z-index: 2
-      width: 80%
-      height: 38vw
-      margin: 0 auto
-      background: #3E3E3E
-      transition()
+
+      h3
+        margin-top: 1em
+
+      .stage
+        width: 100%
+        height: 50vw
+        background: #3E3E3E
+        position: relative
+
+        h2
+          margin: 0
+          padding: .6em 1em 1em 1em
+          gradient: rgba(#000,1) rgba(#000,0)
+          color: white
+          font-weight: 500
+          position: relative
+          z-index: 2
+
+        iframe
+          width: 100%
+          height: 100%
+          absolute: top left
 
       +below(700px)
         width: 90%
         height: 42vw
 
+
   #resources
     gradient: #7395BE #494571
     color: #35404C
 
-    a
-      color: #35404C
-      group()
+    .more-videos
 
-      &:hover .icon
-        transform: scale(1.1) rotate(-3deg)
+      h3
+        font-family: sommet-rounded
+        font-size: 1.5em
+        margin: 1.3em 0
+        text-align: center
+        color: #FCFFF4
 
-    h3
-      font-family: sommet-rounded
-      font-size: 1.3em
-      color: #E0E9F4
-      margin: 0.3em 0 0.5em 0
+      ul
+        inline-list: 19px
+        text-align: center
+        width: 80%
+        margin: 0 auto
 
-    ul
+        li
+          cursor: pointer
+          position: relative
+
+          img
+            size: 170px 120px
+            display: block
+            margin-bottom: 5px
+            border: 3px solid transparent
+            transition()
+
+          &.active img
+            border: 3px solid #555D88
+
+          &:before
+            content: ""
+            size: 45px
+            rounded()
+            background: rgba(#000,.5)
+            absolute: top 40px left 64px
+
+          &:after
+            content: ""
+            triangle: right 15px rgba(#fff, .5)
+            absolute: top 52px left 81px
+            border-top-width: 10px
+            border-bottom-width: 10px
+
+        span
+          font-weight: 600
+          color: #35404c
+          font-size: .9em
+
+    .links
       reset-list()
       max-width: 600px
       padding: 0 30px
-      margin: 7% auto 23% auto
+      margin: 7% auto 25% auto
+
+      a
+        color: #35404C
+        group()
+
+        &:hover .icon
+          transform: scale(1.1) rotate(-3deg)
+
+      h3
+        font-family: sommet-rounded
+        font-size: 1.3em
+        color: #E0E9F4
+        margin: 0.3em 0 0.5em 0
 
       li
         group()
