@@ -29,3 +29,11 @@ block content
     ### EADDRINUSE, address in use
 
     This occurs when you are trying to run two roots sites at the same time, on the same port. To fix this error, cancel the watcher on the other roots site you are running in a different terminal tab and try again. If you want to run two roots sites at once, you can call `roots watch --port XXX` or set the `PORT` environment variable to another value.
+
+    ### EACCES, permission denied
+
+    This error pops up frequently for people that are new to the unix command line. Contrary to popular belief, it is not an error with roots, it's an error with the permissions on your computer.
+
+    To learn more about unix permissions, [check out this article](http://www.perlfect.com/articles/chmod.shtml). You can use the `chmod` or `chown` commands to change the permissions of a file or directory. Typically, I'll recommend running `sudo chown -R $USER /usr/local/lib` to those using OSX (do not run this with linux), which will resolve many permissions issues, but this can be dangerous if you don't fully understand what it's doing. For a slightly safer and more thorough method, check out this great article on [installing npm modules globally without sudo](https://github.com/sindresorhus/guides/blob/master/npm-global-without-sudo.md).
+
+    If you are having this problem, please do not file an issue on roots, as it's not a problem with roots. Check out the articles above, read the full error message you are getting and make sure you have changed the permissions on the mentioned files and/or directories such that they are correct, and it should work fine. If you are still struggling, you can ask [in the roots gitter room](http://gitter.im/jenius/roots) and someone might be able to help.
