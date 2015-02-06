@@ -1,0 +1,17 @@
+extends ../views/single_layout
+
+block content
+  h3 Hybrid Static Sites
+
+  :markdown
+    Roots was specifically built around enabling developers to work on a specific type of static site that we like to call "hybrid static" sites. For a normal static site, everything is compiled beforehand and the site is served via flat html files. For a normal dynamic site, nothing is compiled beforehand the site is served through a server which renders html on a per-request basis and sends it back to the user. Hybrid static is somewhere in the middle of these two approaches.
+
+    ### The Theory
+
+    The theory behind hybrid static sites is that you should be able to render content that will always be static as static, but also allow some content to be loaded dynamically through a server. The way that you split up content between these two is up to the developer working on the site.
+
+    Let's put this in context with an example. Say you are working on a blog. Every user that arrives at your blog will see the first five posts on the blog's homepage, no matter what. So this definitely should be compiled out as static. However, the proportion of users that click through to the second page, or even better, to the 15th page, is much lower. That content probably does not need to be compiled out, you can just load that on demand when the user hits the "next" button.
+
+    To go even deeper, let's say you want your blog to have search functionality. This is simply not possible to achieve with static compiling. You'd have to compile out a page for everything that a user could possibly search for, which is ridiculous. So you need a dynamic aspect to this.
+
+    ### 
