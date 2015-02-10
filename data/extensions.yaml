@@ -25,3 +25,6 @@
 - title: 'Yaml'
   description: 'Load data from local yaml files into your templates'
   link: 'https://github.com/carrot/roots-yaml'
+- title: 'Wordpress'
+  description: 'Access content from wordpress in your views'
+  link: 'https://github.com/carrot/roots-wordpress'
