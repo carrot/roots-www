@@ -23,6 +23,9 @@ main
   padding-top: 30px
   min-height: 300px
 
+  +below(380px)
+    padding-top: 160px
+
   h3
     color: #F0DC9E
     font-family: sommet-rounded
@@ -60,11 +63,16 @@ nav
   gradient: #EED584 #E9B27B
   height: 25vw
   font-family: freight-sans-pro
-  overflow: hidden
   group()
 
   +above(1000px)
     height: 23vw
+
+  .animations
+    position: absolute
+    height: 100%
+    width: 100%
+    overflow: hidden
 
   .light-rays
     absolute: top left
@@ -74,13 +82,16 @@ nav
 
   .logo
     float: left
-    padding: 15px 30px
+    padding: 15px 0 0 30px
     position: relative
     z-index: 2
     text-decoration: none
 
-    +below(335px)
-      padding: 5px 30px
+    +below(365px)
+      padding: 5px 0 0 30px
+
+    +below(340px)
+      padding: 5px 0 0 15px
 
   h1
     margin: 0
@@ -102,6 +113,34 @@ nav
     position: relative
     z-index: 2
 
+    +below(606px)
+      position: absolute
+      top: 110px
+      padding: 40px 30px
+
+    +below(500px)
+      top: 100px
+
+    +below(460px)
+      padding: 30px
+
+    +below(425px)
+      padding: 25px 0 0 30px
+
+    +below(400px)
+      padding: 10px 0 0 30px
+
+    +below(380px)
+      width: 60%
+      left: 50%
+      margin-top: 23px
+      padding: 0
+      transform: translate(-50%, 0)
+      border-radius: 10px
+
+    +below(345px)
+      margin-top: 13px
+
     a
       text-decoration: none
       color: #524E5A
@@ -110,8 +149,28 @@ nav
       margin-right: 30px
       transition()
 
+      +below(606px)
+        color: #FAEAD1
+
+      +below(410px)
+        margin-right: 25px
+
+      +below(380px)
+        display: block
+        margin-right: 0
+        padding: 10px 20px
+        background: rgba(0, 0, 0, 0.25)
+        border-bottom: 1px solid rgba(0, 0, 0, 0.25)
+
+        &:first-child
+          border-radius: 4px 4px 0 0
+
       &:last-child
         margin-right: 0
+
+        +below(380px)
+          border-bottom: 0
+          border-radius: 0 0 4px 4px
 
       &:hover
         color: #7E7366
