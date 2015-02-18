@@ -16,7 +16,9 @@ block content
 
     In your project's directory, run:
 
-    `$ katon add 'roots watch --port $PORT'`
+    ```bash
+    $ katon add 'roots watch --port $PORT'
+    ```
 
     Pay special attention to the `$PORT` variable -- this will dynamically assign you a port so that you don't get stuck with a conflict when Roots tries to run on its default `localhost:1111` port.
 
@@ -28,7 +30,9 @@ block content
 
     In order to do this, make sure charge is installed globally (`npm i charge -g`), then set up Charge to serve your static site via katon:
 
-    `$ katon add 'charge public --port $PORT'`  
+    ```bash
+    $ katon add 'charge public --port $PORT'
+    ````
 
     The above assumes your site lives in your `public` directory. Next, as of `Roots 3.0.1` you can set the roots watcher to open an external URL as opposed to localhost by setting the [open_browser](http://roots.cx/docs/configuration#open_browser) option.  
 
