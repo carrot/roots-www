@@ -7,7 +7,7 @@ dynamic_content = require 'dynamic-content'
 yaml            = require 'roots-yaml'
 
 module.exports =
-  ignores: ['readme.md', '**/*layout.*', '**/_*', '.gitignore']
+  ignores: ['readme.md', '**/*layout.*', '**/_*', '.gitignore', '.editorconfig', 'ship.conf']
 
   locals:
     title: 'Roots: Enlightened Static Sites'
