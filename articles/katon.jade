@@ -1,0 +1,48 @@
+extends ../views/single_layout
+
+block content
+  h3 Improved Roots workflow with Katon
+
+  :markdown
+    If you're anything like us over at [carrot](http://carrot.is) you're constantly spinning up and down sites and apps. For Roots projects, this usually just involves running the `roots watch` command and watching the project build. But when you've got a handful of projects that you're working on simaltaneously, doing this every time can be a little tedious.
+
+    In addition to the pain of starting and stopping all of your Roots sites, you may also be building SPA's (Single Page Apps) that run off of APIs external to your actual Roots projects. In this instance, to communicate between the two you often need to go into your command line and ensure that both servers are running at the same time so that your client app can talk to your API. This process can be a little cumbersome as well, and it's really not pretty to have all your endpoints living at port numbers that you can never keep track of like `http://localhost:9827364`.
+
+    Recently we've come across a great new tool called [Katon](https://github.com/typicode/katon) which allows you to run all of your different servers in the background and binds them neatly to **.ka** domains. For example, for `roots-www` becomes always accessible on our machines at `http://roots-www.ka`.  What's more, if we bind the `roots watch` server using katon, our project is automatically being watched &mdash; you just edit the files and the auto reload works.
+
+    I implore you to check out [katon's documentation](https://github.com/typicode/katon) for all of your other sever needs (express, rails, python) &mdash here I'll go through how simple the roots workflow can be.
+
+    ### Set-up
+
+    In your project's directory, run:
+
+    ```bash
+    $ katon add 'roots watch --port $PORT'
+    ```
+
+    Pay special attention to the `$PORT` variable -- this will dynamically assign you a port so that you don't get stuck with a conflict when Roots tries to run on its default `localhost:1111` port.
+
+    That's really it. Your site will now be accessible via it's `http://<app>.ka` URL and you just need to pull it up in your browser. Edit a couple files and watch the live reload in action.
+
+    ### Alternate Set-up
+
+    In some instances, you may not want your project always "watching" but you do want the convenience of the `<app>.ka` domain name. For this, you can combine the power of [Charge](https://github.com/carrot/charge) and your `app.coffee` file.
+
+    In order to do this, make sure charge is installed globally (`npm i charge -g`), then set up Charge to serve your static site via katon:
+
+    ```bash
+    $ katon add 'charge public --port $PORT'
+    ````
+
+    The above assumes your site lives in your `public` directory. Next, as of `Roots 3.0.1` you can set the roots watcher to open an external URL as opposed to localhost by setting the [open_browser](http://roots.cx/docs/configuration#open_browser) option.  
+
+    ```js
+    // ...
+    module.exports =
+      // the rest of your app.coffee configuration
+      open_browser: 'http://my-roots-site.ka'
+    ```
+
+    Now whenever you run `roots watch`, the site will automatically launch your **.ka** domain instead of localhost. 
+
+    > **Note:** Since you'll be using Charge to serve your site directly, it will not inject the .js to allow Live Reload to function. That is one disadvantage to this technique, but may not be a deal breaker for some.
