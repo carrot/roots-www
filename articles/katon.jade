@@ -17,12 +17,14 @@ block content
     In your project's directory, run:
 
     ```bash
-    $ katon add 'roots watch --port $PORT'
+    $ katon add 'roots watch --port $PORT --no-open'
     ```
 
     Pay special attention to the `$PORT` variable -- this will dynamically assign you a port so that you don't get stuck with a conflict when Roots tries to run on its default `localhost:1111` port.
 
     That's really it. Your site will now be accessible via it's `http://<app>.ka` URL and you just need to pull it up in your browser. Edit a couple files and watch the live reload in action.
+
+    > **Note:** Since katon will shut your server down if you don't make a request within an hour, the `--no-open` option just prevents roots from popping up a new tab when katon restarts your server after a period of inactivity.
 
     ### Alternate Set-up
 
@@ -32,7 +34,7 @@ block content
 
     ```bash
     $ katon add 'charge public --port $PORT'
-    ````
+    ```
 
     The above assumes your site lives in your `public` directory. Next, as of `Roots 3.0.1` you can set the roots watcher to open an external URL as opposed to localhost by setting the [open_browser](http://roots.cx/docs/configuration#open_browser) option.  
 
