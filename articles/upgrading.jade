@@ -36,10 +36,6 @@ block content
 
     If you are upgrading old code, there are a lot of changes to axis, so be careful. You can find full interactive docs for the latest version of axis [here](http://axis.bitballoon.com/).
 
-    ### Unreliable on windows
-
-    While there were a number of issues with windows even in roots v2, v3 is not working well at all on windows, so if you are using a windows machine as you main development environment, I would hold off on using roots for now. We're really sorry that this is the case, it just hasn't been a priority for us in development since the vast majority of our users do not use windows, and it's very difficult to work with. We are aiming to work out the kinks over time and get v3 working with windows, but it's more important right now for us to get this out the door and let most people start messing with it. If you are a windows user interested in helping out with compatibility, that would be amazing, please let us know!
-
     ### Global variables renamed to prevent conflicts
 
     This is not a change that will affect most people, but there were a few global variables inserted automatically for dealing with edge cases, the most commonly used one probably being `path` to give you the current page path (useful for auto-adding body classes). Any of these variables have been changed over such that they are prefixed by an underscore to prevent any potential conflicts. So now it's `_path`. You can always log out all the locals in a jade template using `= JSON.stringify(locals)` if you are curious.
