@@ -128,7 +128,7 @@ block content
 
     The "pass" hooks fire once for *each compile pass taken on the file* (files can be [compiled multiple times](multipass.html), and the "file" hooks fire *once per file*, no matter how many extensions it has or how many times it is compiled. Each hook is passed a **context** object (seen as `ctx` in the example above), which is an instance of a class. The file hooks get an instance of the [CompileFile class](https://github.com/jenius/roots/blob/v3/lib/compiler.coffee#L50), and the pass hooks get the [CompilePass class](https://github.com/jenius/roots/blob/v3/lib/compiler.coffee#L245). The information available in each class will be listed below.
 
-    Using the context, we can modify more or less anything. In the example above, we modify the content and change it to be an upcased version of the content. After this, the file moves on to be written!
+    Using the context, we can modify more or less anything. In the example above, we modify the content and change it to be an upcased version of the content. After this, the file moves on to be written! If you need to do anything asynchronous, you can also return a promise from any of these hooks and it will work just fine.
 
     ### Categories
 
