@@ -1,0 +1,144 @@
+extends ../views/single_layout
+
+block content
+  h3 Integrating Roots With Gulp
+  
+  :markdown
+    For the past few years I have used Gulp as my main build system of choice. The reason I love using Gulp is that its well supported and has a vast ecosystem of plug ins that lets me access many of the tools I use on a day to day basis. Another reason I love using Gulp is that if a specific tool is not available, I can write a few lines of JavaScript, wrap them in a gulp task and the code will act as if its another plug in.
+
+    Recently however, I discovered Roots and have found it to be a joy to use. Formally, Roots can be considered a static site generator, much like Jekyll or Metalsmith. But Roots comes with impressive set of features that makes it more of a build system in its own right. The only issue I have is that Roots is still a fairly young project, and therefore lacks some of the tools that I've grown accustomed to in my present workflow. Since I don't have the programming chops to create a Roots extension, I've set about integrating Roots in my present Gulp build process. The result is an interesting hybrid that combines Roots out of the box functionality with some of the tools that I've come to depend on from the Gulp ecosystem.
+
+    ### The Gulp File
+    Below is the gulpfile I created for this experiment. One thing I noticed is that Roots is so feature rich that many of the tasks I usually write in a standard gulp file are not needed. The only plug-ins that I used in this file are gulp-imagemin, gulp-svg-symbols and browser-sync. The other tasks in this file are pure JavaScript taken directly from the Roots API and other sources.
+
+    ### Required Modules
+    ```
+      var gulp = require('gulp'),
+      $ = require('gulp-load-plugins')(),
+      Roots = require('roots'),
+      path = require('path'),
+      coffeeScript = require('coffee-script/register'),
+      var browserSync = require('browser-sync').create(),
+      var del = require('del'),
+      var runSequence = require('run-sequence');
+    ```
+
+    Those who have used Gulp or Node.js for any extent of time will find the above lines of code to be very familiar. Below is a rundown of each module and what it does.
+
+    - **gulp** is used to pull the entire gulp object into our file.
+    - **gulp-load-plugins** is a convienence module. It is used to load every gulp plugin that we need without having to add additional requirements to the gulp file.
+    - **Roots** imports the entire roots object into our file.
+    - **path** is a native Node.js module that allows us to easily get and set file paths.
+    - **coffee-script/register** is used to compile tasks that are roots related.
+    - **browser-sync** is used to create an instance of browser-sync, a live testing environment that allows users to test their websites on multiple devices simultaneously.
+    - **del** is used to delete files from a specific directory. It's used to clear out the public directory prior to compilation for a cleaner build.
+    - **run-sequence** is used to run tasks synchronously.
+
+    ### Roots tasks
+    ```
+    gulp.task('roots:init', function(){
+      return Roots.new({
+        path: path.join(__dirname, 'roots')
+      }).done(function() {
+        console.log("roots is ready");
+      }, function(err){
+        console.error("oh no! " + err);
+      });
+    });
+    ```
+    The ```roots:init``` task is used to create an instance of Roots within our project directory. Essentially, it code taken from the Roots API which was wrapped in a gulp task. The only difference between this gulp function and the original API documentation is that the progress method has been removed for a cleaner console output.
+
+    ```
+    gulp.task('roots:compile', function(){
+      return require('child_process').exec('roots compile', {cwd: './roots'});
+    });
+    ```
+
+    The ```roots:compile``` task is a simple child process which is used to start the ```roots compile``` command. Here, I deviated from the Roots API as it interfered with the default gulp task.
+
+    ```
+    gulp.task('roots:deploy', function(){
+      var project = new Roots(path.join(__dirname, 'roots'));
+      return project.deploy({to: 'gh-pages'})
+        .done(function(){
+          console.log('finished!');
+        }, function(err){
+          console.log('uh oh... ' + err);
+      });
+    });
+    ```
+
+    Like ```roots:init```, ```roots:deploy``` is taken directly from the Roots API. Once again the .progress method has been removed from the task for a cleaner console output.
+
+    ### Standard Gulp Tasks
+    
+    ```
+    gulp.task('images', function(){
+      return gulp.src('./images/*')
+        .pipe($.imagemin({
+          optimizationLevel: 3,
+          progressive: true,
+          interlaced: true
+        }))
+        .pipe(gulp.dest('./roots/assets/img'));
+    });
+    ```
+
+    Those who have used Gulp for any extent of time will find the ```images``` task to be very familiar. It takes files from the ```images``` folder, optimizes them and pipes them into the ```roots/assets/img``` directory.
+
+    ```
+    gulp.task('vectors', function(){
+      return gulp.src('./vectors/*.svg')
+        pipe($.symbols({
+          templates: ['default-svg']
+        }))
+        .pipe(gulp.dest('roots/views'));
+    });
+    ```
+
+    The ```vectors``` task takes svg files from the ```vectors``` directory, combines them into an ```svg-symbols``` file and sends it to the ```roots/views``` folder. From there the file can be included from a jade template. For more information, see this article from CSS-Tricks.
+
+    ```
+    gulp.task('browser-sync', function() {
+      browserSync.init({
+        server : {
+          baseDir : './roots/public/'
+        }
+      });
+    });
+    ```
+
+    The ```browser-sync``` task is used to serve files from the ```roots/public``` directory in a live testing environment. This task replaces the ```roots watch``` command.
+
+    ### Utility Tasks
+    ```
+    gulp.task('clean', function(cb){
+      del(['./roots/public/**/*'], cb);
+    });
+    ```
+    The ```clean``` task is used to clear out the ```roots/public``` directory. It is commonly run before ```roots:compile``` to assure that unneeded files from prior compilations don't make their way into current builds.
+
+    ```
+    gulp.task('watch', function(){
+      gulp.watch(['roots/**/*', '!roots/public/**/*'], ['roots:compile']);
+      gulp.watch('roots/public/**/*', browserSync.reload);
+      gulp.watch('images/**', ['images']);
+      gulp.watch('vectors/*.svg', ['vectors']);
+    });
+    ```
+    The ```watch command``` is the nerve center of the gulp file. It is used to instruct gulp on how to react to files changes within your project.
+
+    ### The Default Task
+    ```
+    gulp.task('default', function(){
+      runSequence('clean', ['images', 'vectors'], 'roots:compile', 'browser-sync', 'watch');
+    });
+    ```
+    Last, but not least we come to the ```default``` task. Here the ```run-sequence``` module is used to make sure that all of our resources are built before the project is served by browser-sync server and the file watcher kicks in.
+
+    ### In Conclusion
+    Of all the build systems I've used with Gulp, Roots provided me with the best experience. Roots eliminated a lot of the boiler plate code that I usually include in my gulp files. at the same time the Roots API made its integration with Gulp easy.
+
+    Although I would like to see many of the Gulp plugins I mentioned in this article to be ported over to Roots extensions, the above solution serves as a workable solution until the Roots community grows, flourishes and thrives.
+
+    
