@@ -3,7 +3,11 @@ extends ../views/single_layout
 block content
   h3 Integrating Roots With Gulp
   
-  :markdown
+  .author
+    :marked
+      This article was contributed by [Michael Kornblum](https://github.com/michaelkornblum). Thanks Michael!
+  
+  :marked
     For the past few years I have used Gulp as my main build system of choice. The reason I love using Gulp is that its well supported and has a vast ecosystem of plug ins that lets me access many of the tools I use on a day to day basis. Another reason I love using Gulp is that if a specific tool is not available, I can write a few lines of JavaScript, wrap them in a gulp task and the code will act as if its another plug in.
 
     Recently however, I discovered Roots and have found it to be a joy to use. Formally, Roots can be considered a static site generator, much like Jekyll or Metalsmith. But Roots comes with impressive set of features that makes it more of a build system in its own right. The only issue I have is that Roots is still a fairly young project, and therefore lacks some of the tools that I've grown accustomed to in my present workflow. Since I don't have the programming chops to create a Roots extension, I've set about integrating Roots in my present Gulp build process. The result is an interesting hybrid that combines Roots out of the box functionality with some of the tools that I've come to depend on from the Gulp ecosystem.
