@@ -31,7 +31,7 @@ block content
     - **path** is a native Node.js module that allows us to easily get and set file paths.
     - **coffee-script/register** is used to compile tasks that are roots related.
     - **browser-sync** is used to create an instance of browser-sync, a live testing environment that allows users to test their websites on multiple devices simultaneously.
-    - **del** is used to delete files from a specific directory. It's used to clear out the public directory prior to compilation for a cleaner build.
+    - **del** is used to delete files from a specific directory. It is used to clear out the public directory prior to compilation for a cleaner build.
     - **run-sequence** is used to run tasks synchronously.
 
     ### Roots tasks
@@ -46,16 +46,30 @@ block content
       });
     });
     ```
-    The ```roots:init``` task is used to create an instance of Roots within our project directory. Essentially, it code taken from the Roots API which was wrapped in a gulp task. The only difference between this gulp function and the original API documentation is that the progress method has been removed for a cleaner console output.
+    The ```roots:init``` task is used to create an instance of Roots within our project directory. Essentially, its code taken from the Roots API which was wrapped in a gulp task. The only difference between this gulp function and the original API documentation is that the progress method has been removed for a cleaner console output.
 
     ```
     gulp.task('roots:compile', function(){
-      return require('child_process').exec('roots compile', {cwd: './roots'});
+      return require('child_process').exec('roots compile', {cwd: './roots'}).on('exit', function(){
+        browserSync.init({
+          server : {
+            baseDir : './roots/public/'
+          }
+        })
+      });
     });
     ```
 
-    The ```roots:compile``` task is a simple child process which is used to start the ```roots compile``` command. Here, I deviated from the Roots API as it interfered with the default gulp task.
-
+    The ```roots:compile``` task is a simple child process which is used to start the ```roots compile``` command. One special thing to note here is that I used a callback function to start the browswer-sync server, once compilation is compilation is complete.
+    
+    ```
+    gulp.task('roots:recompile', function(){
+      return require('child_process').exec('roots compile', {cwd: './roots'}).on('exit', function(){browserSync.reload()});
+    });
+    ```
+    
+    Like ```roots:compile```, ```roots:recompile``` executes the same child process, but uses a callback function on exit that reloads the browser-sync server.
+    
     ```
     gulp.task('roots:deploy', function(){
       var project = new Roots(path.join(__dirname, 'roots'));
@@ -96,19 +110,7 @@ block content
     });
     ```
 
-    The ```vectors``` task takes svg files from the ```vectors``` directory, combines them into an ```svg-symbols``` file and sends it to the ```roots/views``` folder. From there the file can be included from a jade template. For more information, see this article from CSS-Tricks.
-
-    ```
-    gulp.task('browser-sync', function() {
-      browserSync.init({
-        server : {
-          baseDir : './roots/public/'
-        }
-      });
-    });
-    ```
-
-    The ```browser-sync``` task is used to serve files from the ```roots/public``` directory in a live testing environment. This task replaces the ```roots watch``` command.
+    The ```vectors``` task takes svg files from the ```vectors``` directory, combines them into an ```svg-symbols``` file and sends it to the ```roots/views``` folder. From there the file can be included from a jade template. For more information, see [this article](https://css-tricks.com/svg-symbol-good-choice-icons/) from CSS-Tricks.
 
     ### Utility Tasks
     ```
@@ -120,10 +122,15 @@ block content
 
     ```
     gulp.task('watch', function(){
-      gulp.watch(['roots/**/*', '!roots/public/**/*'], ['roots:compile']);
-      gulp.watch('roots/public/**/*', browserSync.reload);
-      gulp.watch('images/**', ['images']);
-      gulp.watch('vectors/*.svg', ['vectors']);
+      gulp.watch([
+        'roots/views/**/*',
+        'roots/assets/**/*',
+        'roots/app.coffee',
+        'roots/app.production.coffee',
+        '!roots/public/**/*'],
+        ['roots:recompile']);
+      gulp.watch('images/*', ['images']);
+      gulp.watch('svg/*.svg', ['vectors']);
     });
     ```
     The ```watch command``` is the nerve center of the gulp file. It is used to instruct gulp on how to react to files changes within your project.
@@ -131,13 +138,15 @@ block content
     ### The Default Task
     ```
     gulp.task('default', function(){
-      runSequence('clean', ['images', 'vectors'], 'roots:compile', 'browser-sync', 'watch');
+      runSequence('clean', 'images', 'vectors', 'roots:compile', 'watch');
     });
     ```
     Last, but not least we come to the ```default``` task. Here the ```run-sequence``` module is used to make sure that all of our resources are built before the project is served by browser-sync server and the file watcher kicks in.
 
     ### In Conclusion
     Of all the build systems I've used with Gulp, Roots provided me with the best experience. Roots eliminated a lot of the boiler plate code that I usually include in my gulp files. at the same time the Roots API made its integration with Gulp easy.
+    
+    To see this code in action, visit my [github repository](https://github.com/michaelkornblum/juice-bar) or drop by the [gitter chatroom](https://gitter.im/jenius/roots). I'd love to hear from you.
 
     
 
