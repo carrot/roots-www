@@ -21,7 +21,7 @@
     "moment": "2.x",
     "parallax.js": "jenius/parallax",
     "roots": "3.1.x",
-    "roots-browserify": "0.4.x",
+    "roots-browserify": "0.5.x",
     "roots-yaml": "0.0.4",
     "rupture": "0.6.x",
     "stylus": "0.52.x",
