@@ -6,7 +6,7 @@
     "url": "http://github.com/carrot/roots-www.git"
   },
   "dependencies": {
-    "autoprefixer-stylus": "0.7.x",
+    "autoprefixer-stylus": "0.8.x",
     "axis": "0.5.x",
     "chart.js": "1.x",
     "coffee-script": "1.10.x",
