@@ -8,6 +8,22 @@ block content
 
     To compile a file for multiple languages, you can just **add another extension**. For example, if you wanted a file to be compiled in ejs then jade, you could call the file `example.jade.ejs`, and as long as both compilers are installed, it will work.
 
+    If you want to use a CSS preprocessor like _stylus_ in conjunction with _postcss_, you need to perform an additional step.
+    First you need add the extension `.css` to your `master.styl` like so: `master.css.styl`.
+    Then adjust your `app.coffee`:
+
+    ```coffee
+    css_pipeline(files: 'assets/css/*.styl', postcss:true),
+
+    ...
+
+    postcss:
+      use: [lost()]
+    ```
+
+    Note that `postcss` and `lost` need to be installed, or roots will throw an error your way.
+    In the following section we take a look at how exactly roots treats the file extensions we just added.
+
     ### File Extension Logic
 
     Roots abides by a set of rules when processing and outputting file extensions. If you are confused about why a certain file has a certain extension after being compiled, this is probably the section you are looking for.
