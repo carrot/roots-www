@@ -1,12 +1,12 @@
 @keyframes rotate
   0%
-    transform: rotate(0deg)
+    transform: rotate3d(0, 0, 1, 0deg)
 
   100%
-    transform: rotate(360deg)
+    transform: rotate3d(0, 0, 1, 360deg)
 
 @keyframes drift
   from
-    transform: translate(0,0)
+    transform: translate3d(0, 0, 0)
   to
-    transform: translate(100vw, 0)
+    transform: translate3d(100vw, 0, 0)
