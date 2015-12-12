@@ -31,3 +31,6 @@
 - title: 'Wordpress'
   description: 'Access content from wordpress in your views'
   link: 'https://github.com/carrot/roots-wordpress'
+- title: 'Collections'
+  link: 'https://github.com/netlify/roots-collections'
+  description: 'Jekyll-style content collections with markdown'
