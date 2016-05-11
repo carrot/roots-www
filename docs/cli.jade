@@ -108,16 +108,6 @@ block content
     **Positional**    
     - _path_: Path of the project you'd like to remove the output of. Optional, defaults to current directory.
 
-    ### Deploy
-
-    Compiles and deploys your compiled project to a static host. This is a wrapper for [ship](https://github.com/carrot/ship>). Running this command will prompt you for authentication details for the host you want to ship to and save these in a file called `ship.conf` at the root of your project. If it's a public project, make sure to gitignore this file before pushing!
-
-    **Positional**    
-    - _path_: Path of the project you'd like to deploy. Optional, defaults to current directory.
-
-    **Optional**    
-    - _-to_, _--to_: Which host you'd like to deploy the project to. Currently available hosts are `s3`, `heroku`, and `gh-pages`, but check ship for more recent updates.
-
     ### Analytics
 
     Enables or disabled roots' analytics. Analytics are anonymous, reveal no personal information, the data is public, and is only used to help the core developers to improve roots for you.

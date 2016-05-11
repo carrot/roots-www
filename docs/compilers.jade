@@ -1,0 +1,45 @@
+extends ../views/single_layout
+
+block content
+  :marked
+    ### Using Different Compilers
+    
+    While roots' default template uses jade, stylus, and coffeescript, roots supports a large variety of different compiled languages that are extremely easy to get started with.
+    
+    Roots uses a project called [accord](https://github.com/jenius/accord) to compile files. In order to use a language, you just need to install the package using npm, then create a file using that language's file extension. Below is a list of supported languages along with their package names and extensions:
+    
+    - **[jade](http://jade-lang.com/)**: `npm i jade -S`, `*.jade`
+    - **[eco](https://github.com/sstephenson/eco)**: `npm i eco -S`, `*.eco`
+    - **[ejs](https://github.com/tj/ejs)**: `npm i ejs -S`, `*.ejs`
+    - **[markdown](https://github.com/chjj/marked)**: `npm i marked -S`, `*.md`
+    - **[mustache](https://github.com/twitter/hogan.js)**: `npm i hogan.js -S`, `*.mustache` or `*.hogan`
+    - **[handlebars](https://github.com/wycats/handlebars.js)**: `npm i handlebars -S`, `*.hbs`
+    - **[haml](https://github.com/tj/haml.js)**: `npm i hamljs -S`, `*.haml`
+    - **[swig](http://paularmstrong.github.io/swig)**: `npm i swig -S`, `*.swig`
+    - **[marc](https://github.com/bredele/marc)**: `npm i marc -S`, `*.md`
+    - **[toffee](https://github.com/malgorithms/toffee)**: `npm i toffee -S`, `*.toffee`
+    - **[dot](https://github.com/olado/doT)**: `npm i dot -S`, `*.dot`
+    - **[stylus](http://learnboost.github.io/stylus/)**: `npm i stylus -S`, `*.styl`
+    - **[scss](https://github.com/sass/node-sass)**: `npm i node-sass -S`, `*.scss` or `*.sass`
+    - **[less](https://github.com/less/less.js/)**: `npm i less -S`, `*.less`
+    - **[myth](https://github.com/segmentio/myth)**: `npm i myth -S`, `*.myth`
+    - **[postcss](https://github.com/postcss/postcss)**: `npm i postcss -S`, `*.css` or `*.pcss` or `*.sss`
+    - **[coffee-script](http://coffeescript.org)**: `npm i coffee-script -S`, `*.coffee`
+    - **[dogescript](https://github.com/dogescript/dogescript)**: `npm i dogescript -S`, `*.djs`
+    - **[coco](https://github.com/satyr/coco)**: `npm i coco -S`, `*.co`
+    - **[LiveScript](https://github.com/gkz/LiveScript)**: `npm i LiveScript -S`, `*.ls`
+    - **[babel](https://github.com/babel/babel)**: `npm i babel-core -S`, `*.js` or `*.jsx`
+    - **[jsx](https://github.com/facebook/react)**: `npm i react-tools -S`, `*.jsx`
+    - **[cjsx](https://github.com/jsdf/coffee-react-transform)**: `npm i coffee-react-transform -S`, `*.cjsx`
+    - **[typescript](http://www.typescriptlang.org/)**: `npm i typescript-compiler -S`, `*.ts`
+    - **[minify-js](https://github.com/mishoo/UglifyJS2)**: `npm i uglify-js -S`, `*.js`
+    - **[minify-css](https://github.com/jakubpawlowicz/clean-css)**: `npm i clean-css -S`, `*.css`
+    - **[minify-html](https://github.com/kangax/html-minifier)**: `npm i html-minifier -S`, `*.html`
+    - **[csso](https://github.com/css/csso)**: `npm i csso -S`, `*.css`
+    - **[escape-html](https://github.com/mathiasbynens/he)**: `npm i he -S`, `*.html`
+    
+    So for example if you wanted to use `ejs`, you could just run `npm i ejs -S` from your command line, then create a file with a `.ejs` extension, and the next time you run roots, it will compile.
+    
+    If you want to pass options to any of these compilers, you can do so using `app.coffee`. Simple add the name of the compiler as a key to your configuration, and as the value, an object with any of the configuration values. Each language's options [are documented here](https://github.com/jenius/accord/tree/master/docs).
+    
+    Note that multiple languages can be used with [multipass compilation](/docs/multipass). This means that as long as the languages are compatible, you can put two extensions on a file and have it compiled through both languages. For example, if you wanted to run both jade and minify-html, you could name the file `example.html.jade`, install both compilers, set up the options as you wish, and it will run.
