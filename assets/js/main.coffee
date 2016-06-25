@@ -32,7 +32,7 @@ thumbs.on 'click', ->
   new_id = $(@).data('id')
 
   titlebar.text(new_title)
-  iframe.attr('src', "http://www.youtube.com/embed/#{new_id}?hd=1&rel=0&autohide=1&showinfo=0&autoplay=1")
+  iframe.attr('src', "https://youtube.com/embed/#{new_id}?hd=1&rel=0&autohide=1&showinfo=0&autoplay=1")
 
   thumbs.removeClass('active')
   $(@).addClass('active')
