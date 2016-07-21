@@ -1,0 +1,167 @@
+extends ../views/single_layout
+
+block content
+  h3 Static E-Commerce: Integrating Snipcart with Roots
+
+  :marked
+    If you've been reading the [Snipcart blog](https://snipcart.com/blog) for the past year, chances are you came across a handful of posts regarding static web development and e-commerc.. Snipcart, as an HTML/JS-based shopping cart solution, is a wonderful fit with static sites. So we try to nurture our dynamic (pun intended) relationship with static web dev communities as much as possible. Not only because our tool is a great match with static site generators, but also because, like our friend Mathias from [Netlify](https://www.netlify.com/), we're convinced they [really are the next big thing](http://www.smashingmagazine.com/2015/11/modern-static-website-generators-next-big-thing/). Why? Well, to put it shortly: **they're fast, cheap, simple, and secure**. We believe that static site **performance**, among other things, [fosters e-commerce success](https://snipcart.com/blog/using-modern-static-web-tech-to-foster-e-commerce-success).
+    
+    For this post, I'm going to show you how easy it is to sell online with Snipcart and a [Roots](http://roots.cx/) static site. Roots is a static site generator developed by [Carrot Creative](http://carrot.is/creative), a digital agency under the Vice umbrella building great web experiences for international clients.
+    
+    Since the folks at **Carrot** built the tool, and since I recently became a vegetarian, we'll be learning how to sell ***carrots*** in this quick demo. Yup, carrots.
+    
+    Ready?
+    
+    ![snipcart-static-site-ecommerce-roots-carrot](https://snipcartweb-10f3.kxcdn.com/media/1428/snipcart-static-site-ecommerce-roots-carrot.gif)
+    
+    _Let's do this_
+    
+    
+    ## What's Roots exactly?
+    
+    Like many now-famous players in the static world (think Jekyll, Middleman, Hugo), Roots is at its core a static site generator, i.e. it renders static HTML, CSS and JavaScript files. It's built on Node.js, [well-documented](http://roots.cx/docs) and can be used for an impressive array of small to medium front-end projects. 
+    
+    We suggest starting by checking out the detailed video overview on their home page; it'll give you a clearer picture of what Roots really is.
+    
+    Now let's go sell those carrots, shall we?
+    
+    ### Step 1: Install Roots
+    
+    You'll have to start by installing the generator itself. You can do this by [following the installation steps](http://roots.cx/articles/getting-started) on the Roots website.
+    
+    ### Step 2: Create your "Bunny Bites" Roots site
+    
+    Now let's create your new website using the *roots new [website-name]* command:
+    
+    ```bash
+    roots new bunny-bites
+    roots watch
+    ```
+    
+    ### Step 3: Include Snipcart's assets into your layout
+    
+    Third step is to add Snipcart's JavaScript and CSS files into the `layout.jade` file:
+    
+    ```jade
+    doctype html
+    html
+    
+      head
+        meta(charset='utf8')
+        meta(http-equiv='X-UA-Compatible', content='IE=edge, chrome=1')
+        meta(name='description', content='description of your site')
+        meta(name='author', content= "author of the site")
+        title= _path
+    
+        != css()
+    
+        link(id='snipcart-theme' rel='stylesheet' href='https://cdn.snipcart.com/themes/base/snipcart.min.css')
+        script(src='//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js')
+        script(id='snipcart' src='https://cdn.snipcart.com/scripts/snipcart.js' data-api-key='{YOUR KEY}')
+    
+      body
+        block content
+        != js()
+    ```
+    
+    ### Step 4: Use your first Roots library!
+    
+    Now let's try and put this little shop together. We'll be using the [roots-dynamic-content](https://github.com/carrot/roots-dynamic-content) library to generate our product files and import them to our Roots site. To do so, run:
+    
+    ```
+    npm i dynamic-content -S
+    ```
+    
+    Then add the following lines into your `app.coffee`:
+    
+    ```coffeescript
+    dynamic = require 'dynamic-content'
+    module.exports =
+      extensions: [
+        dynamic()
+      ]
+    ```
+    
+    ### Step 5: Create the products
+    
+    To let the root-dynamic-content library work its magic, we need to create a new "products" folder at the root folder. Then, we'll add three products inside this folder: **baby-carrot.jade**, **carrot-seeds.jade**, **carrot.jade**. Let's take a look at our **carrot** product for instance:
+    
+    ```yml
+    ---
+    id: 1
+    name: 'Carrot'
+    price: 3
+    weight: 2
+    description: "What's up, Doc?"
+    image: "http://bunny-bites.netlify.com/img/carrot.jpg"
+    ---
+    ```
+    
+    ### Step 6:  Build the store
+    
+    Now that we've got ourselves some awesome products, we need the actual store to sell them! Inside your `index.jade` file, you will need to iterate on each product, then build your buy buttons:
+    
+    ```jade
+    extends layout
+    
+    block content
+      h3 Welcome to Bunny Bites!
+      ul
+        each product in site.products
+          li
+            img(src=product.image)
+            div
+              a(href=product._url 
+                data-item-name=product.name
+                data-item-id=product.id
+                data-item-price=product.price
+                data-item-description=product.description
+                data-item-weight=product.weight
+                data-item-url=product._url
+                data-item-image=product.image
+                class='snipcart-add-item')= product.name
+    ```
+    
+    Ladies and gentlemen, we are ready for lift-off. Our store can now be used to spread vegetarian propaganda all over the world wide web; yay!
+    
+    <img src="https://snipcartweb-10f3.kxcdn.com/media/1427/snipcart-roots-bunny-bites.png" width="800" />    
+    
+    <img src="https://snipcartweb-10f3.kxcdn.com/media/1426/snipcart-roots-bunny-bites-cart.png" width="800" />
+    
+    ### Step 7: Deploy on Netlify
+    
+    If you've read our blog a bit, you know we love to use Netlify in our static site e-commerce series. Their awesome CDN-based hosting allows developers to focus on code while their tool builds, deploys and hosts their static sites.
+    
+    First, we will install the Netlify command line tools:
+    
+    ```bash
+    npm install netlify-cli -g
+    ```
+    
+    Then, in the root of my project, we'll init a new Netlify site. We can't use the simple netlify deploy command because we are using a static site generator. We will use what Netlify calls Continuous Deployment. Run the following command in any terminal:
+    
+    ```bash
+    netlify init
+    ```
+    
+    You will then have a few simple questions to answer. After that, you'll be asked to enter your GitHub credentials in order to create a SSH Key on your behalf. Once it's done, you shouldn't have to enter your credentials again.
+    
+    Once you've went through this quick process, the website will be created with a random name. I updated my site's name because I *really* wanted it to be **Bunny Bites**:
+    
+    ```bash
+    netlify update -n bunny-bites
+    ```
+    
+    After about a short minute, my site was deployed.
+    
+    And that's it; my site is now built, deployed and blazing fast!
+    
+    ## Conclusion
+    
+    Integrating Snipcart with Roots was simple, fun and, more importantly, fast. 
+    
+    Today, thanks to the vast range of 3rd party tools available, creating great, fast static e-commerce experiences is now more than ever within reach of front-end developers. 
+    
+    And like the folks at Carrot proved by [integrating Roots and Contentful (API-first CMS) to their web development workflow](http://carrot.is/coding/static_cms), static site content can *also* be managed and updated by non-technical users. A world of possibilities is really opening with modern static web tech, and we're thrilled to see where it'll take us.
+    
+    Finally, here's hoping all the carrots you sell with Roots & Snipcart empower cooks all over the world to offer incredible carrot soups and delicious carrot cakes and ... all right, leaving now ---> []. 
