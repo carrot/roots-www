@@ -72,7 +72,25 @@ block content
 
     ##### locals
 
-    An object that is injected into the options every compiler in use in the project. So for example, if you are using both jade and ejs in a project and some locals to be the same across the two, you don't have to duplicate, just add them to `locals`. If there is a conflict between `locals` and compiler-specific options, the compiler options will win out.
+    An object that is injected into the options of every compiler in use in the project. So for example, if you are using both jade and ejs in a project and some locals to be the same across the two, you don't have to duplicate, just add them to `locals`. If there is a conflict between `locals` and compiler-specific options, the compiler options will win out.
+
+    To expose values from `locals` to Javascript, you'll need to inject them into your page through your template.
+
+    ```
+    // my_template.jade
+    // Include `locals` from app.*.coffee as `window.ENV`
+    script!= "var ENV = '" + JSON.stringify(locals) + "'; ENV = JSON.parse(ENV);"
+    ```
+
+    Then in your Coffeescript/Javascript you can do:
+
+    ```coffee
+    # main.coffee
+    chat = FooChat.initialize
+      # Get the values from `locals` in `app.*.coffee`
+      subscribeKey: ENV.subscribe_key
+      publishKey: ENV.publish_key
+    ```
 
     ##### before
 
