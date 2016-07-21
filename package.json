@@ -13,7 +13,7 @@
     "dynamic-content": "0.3.x",
     "highlight.js": "8.x",
     "jade": "1.x",
-    "jeet": "6.x",
+    "jeet": "6.0.x",
     "jstransformer-marked": "^1.0.1",
     "lodash.debounce": "3.x",
     "lodash.find": "3.x",
