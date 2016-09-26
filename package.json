@@ -1,10 +1,8 @@
 {
   "name": "roots-www",
   "description": "roots marketing page",
-  "repository": {
-    "type": "git",
-    "url": "http://github.com/carrot/roots-www.git"
-  },
+  "version": "1.0.0",
+  "author": "Jeff Escalante",
   "dependencies": {
     "autoprefixer-stylus": "0.8.x",
     "axis": "0.5.x",
@@ -26,5 +24,10 @@
     "rupture": "0.6.x",
     "stylus": "0.52.x",
     "zepto-browserify": "1.x"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/carrot/roots-www.git"
   }
 }
